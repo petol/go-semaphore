@@ -1,5 +1,5 @@
 # go-semaphore
-Simple Semaphore Solution based on a buffered Channel
+Simple Semaphore Solution based on a buffered Channel, Blocking until a semaphore is released
 
 
 ## Usage:
