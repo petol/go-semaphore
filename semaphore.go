@@ -1,5 +1,7 @@
 package semaphore
 
+import "errors"
+
 // Semaphore struct which handles Throttling of Concurrency
 type Semaphore struct {
 	s chan bool
@@ -12,10 +14,15 @@ func (S *Semaphore) Acquire() {
 
 // Release semaphore Lock
 func (S *Semaphore) Release() {
-	<-S.s
+	if len(S.s) > 0 {
+		<-S.s
+	}
 }
 
 // NewSemaphore returns a semaphore of size {size}
-func NewSemaphore(size int) *Semaphore {
-	return &Semaphore{s: make(chan bool, size)}
+func NewSemaphore(size int) (*Semaphore, error) {
+	if size < 1 {
+		return nil, errors.New("Size must be a positive integer")
+	}
+	return &Semaphore{s: make(chan bool, size)}, nil
 }
