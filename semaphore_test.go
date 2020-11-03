@@ -1,7 +1,6 @@
 package semaphore
 
 import "testing"
-import "fmt"
 
 func TestItFillsUpAsExpected(t *testing.T) {
 	size := 1
