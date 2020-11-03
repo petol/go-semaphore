@@ -43,6 +43,5 @@ func TestItOnlyAllowsPositiveIntegerSize(t *testing.T) {
 
 func TestItDoesntHangOnEmptyRelease(t *testing.T) {
 	s, _ := NewSemaphore(1)
-	fmt.Printf("Size: %d\n", len(s.s))
 	s.Release()
 }
